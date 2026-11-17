@@ -1,0 +1,696 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de EPP | CBE Soluciones E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; }
+        .header-nav { background-color: #1e293b; color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .header-nav img { height: 45px; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; font-size: 15px; }
+        .nav-links a:hover { color: #ff6600; }
+        
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); align-items: flex-start; }
+       
+.detail-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    background: white; 
+    padding: 35px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    align-items: stretch; /* Estira ambos lados verticalmente */
+}
+
+.gallery { 
+    display: flex; 
+    gap: 15px; 
+    width: 100%;
+    height: 100%;
+}
+
+.thumbs { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+}
+
+.thumbs img { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    border: 2px solid #e2e8f0; 
+}
+
+.main-img { 
+    flex: 1; 
+    width: 100%;
+    display: flex;
+}
+
+/* Fuerza el alto vertical directo en la etiqueta de la imagen */
+.main-img img#imgPrincipal { 
+    width: 150% !important; 
+    height: 500px !important; /* Ajusta la altura vertical de la foto */
+    max-height: none !important;
+    object-fit: cover !important; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+        .info-content span.tag { color: #ff6600; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+        .info-content h1 { font-size: 28px; margin: 10px 0 20px 0; color: #0f172a; }
+        .info-content p { color: #475569; font-weight: 400; line-height: 1.6; margin-bottom: 15px; font-size: 15px; }
+
+        /* Grilla de productos EPP */
+        .epp-catalog { margin-top: 50px; }
+        .epp-catalog h2 { font-size: 22px; margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .epp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        
+        .epp-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .epp-card img { width: 100%; height: 160px; object-fit: contain; border-radius: 6px; margin-bottom: 10px; }
+        .epp-card h4 { font-size: 16px; font-weight: 600; margin: 10px 0 5px 0; color: #1e293b; }
+        .epp-card .price { font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 15px; }
+        .btn-add { background-color: #ff6600; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; font-size: 14px; }
+        .btn-add:hover { background-color: #e65c00; }
+    
+       /* Cabecera fija y logo más pequeño */
+.header-nav { 
+    position: fixed !important; 
+    top: 0 !important; 
+    left: 0 !important; 
+    width: 100% !important; 
+    background-color: #1e293b !important; 
+    color: white !important; 
+    padding: 8px 5% !important; 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    z-index: 1000 !important; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important; 
+}
+
+/* Control del tamaño del logo */
+.header-nav img { 
+    height: 80px !important; /* Ajusta este número si lo quieres aún más pequeño */
+    width: auto !important; 
+    display: block !important; 
+    border-radius: 4px !important; 
+}
+
+/* Espacio superior para que el menú fijo no tape la página */
+body { padding-top: 0; }
+
+/* Ajustes exclusivos de la página EPP. */
+.epp-page .detail-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.epp-page .gallery, .epp-page .main-img, .epp-page .info-content,
+.epp-page .epp-card { min-width: 0; }
+.epp-page .gallery { align-items: flex-start; }
+.epp-page .thumbs { flex: 0 0 70px; }
+.epp-page .thumbs img {
+    width: 70px; height: 80px !important;
+    object-fit: contain !important; background: #fff;
+}
+.epp-page .main-img { justify-content: center; }
+.epp-page .main-img img#imgPrincipal {
+    width: 100% !important; height: clamp(300px, 40vw, 480px) !important;
+    object-fit: contain !important; background: #fff;
+}
+.epp-page .epp-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+}
+.epp-page .epp-card { align-items: stretch; }
+.epp-page .epp-card > img {
+    display: block; width: 100% !important; height: 260px !important;
+    object-fit: contain !important; object-position: center; transform: none !important;
+}
+.epp-page .epp-card .price { min-width: 0; max-width: 100%; padding: 14px 8px; }
+.epp-page .epp-card h4, .epp-page .info-content h1,
+.epp-page .info-content p { overflow-wrap: anywhere; }
+.epp-page .btn-add { min-height: 44px; line-height: 1.4; }
+.epp-page .cant-control { flex-wrap: wrap; }
+.epp-page .cant-control button { min-width: 44px; min-height: 44px; }
+.epp-page .epp-topbar { flex-wrap: wrap; gap: 4px 16px; }
+.epp-page .epp-topbar > div { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.epp-page .epp-topbar > div:first-child { flex-wrap: wrap; gap: 4px 16px !important; }
+.epp-page .epp-menu-toggle { display: none; }
+.epp-page :focus-visible { outline: 3px solid #9a3900; outline-offset: 3px; }
+@media (max-width: 900px) {
+    .epp-page .detail-grid { grid-template-columns: minmax(0, 1fr); padding: 24px; }
+    .epp-page .epp-header { flex-wrap: wrap; gap: 8px 12px; padding: 8px 16px !important; }
+    .epp-page .epp-header .logo img { height: 60px !important; max-width: 100%; }
+    .epp-page .epp-menu-toggle {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-height: 44px; padding: 8px 14px; margin-left: auto;
+        border: 1px solid #64748b; border-radius: 8px;
+        background: #fff; color: #1e293b; font: inherit; cursor: pointer;
+    }
+    .epp-page .epp-navigation {
+        display: none !important; position: static; width: 100%;
+        flex-direction: column; align-items: stretch !important;
+        gap: 0 !important; padding: 0; background: #fff; order: 4;
+        max-height: 45vh; overflow-y: auto;
+    }
+    .epp-page .epp-navigation.is-open { display: flex !important; }
+    .epp-page .epp-navigation a {
+        display: flex; align-items: center; min-height: 44px; padding: 8px;
+    }
+    .epp-page .epp-header-actions { width: 100%; justify-content: flex-end; gap: 8px !important; }
+    .epp-page .epp-header-actions > button { min-height: 44px; }
+    .epp-page .epp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    .epp-page .container { padding: 0 16px; margin-top: 24px; }
+    .epp-page .detail-grid { padding: 20px; gap: 24px; }
+    .epp-page .gallery { flex-direction: column; gap: 12px; }
+    .epp-page .thumbs { flex: none; flex-direction: row; flex-wrap: wrap; gap: 8px; width: 100%; }
+    .epp-page .thumbs img { width: 44px; height: 56px !important; }
+    .epp-page .main-img { order: -1; width: 100%; }
+    .epp-page .main-img img#imgPrincipal { height: 300px !important; }
+    .epp-page .info-content h1 { font-size: 25px; }
+    .epp-page .info-content p { font-size: 16px !important; }
+    .epp-page .epp-grid { grid-template-columns: minmax(0, 1fr); }
+}
+    </style>
+  <link rel="stylesheet" href="detalle-header.css">
+</head>
+<body class="epp-page cbe-detail-page">
+
+    <!-- BARRA SUPERIOR DE CONTACTOS -->
+    <div class="cbe-detail-topbar">
+  <div class="cbe-detail-topbar-inner">
+    <div class="cbe-detail-contacts">
+      <a href="tel:+51960139960">+51 960 139 960</a>
+      <a href="mailto:cbesoluciones@gmail.com">cbesoluciones@gmail.com</a>
+      <span>Lima, Perú</span>
+    </div>
+    <span class="cbe-detail-company">CBE SOLUCIONES E.I.R.L.</span>
+  </div>
+</div>
+
+    <!-- ENCABEZADO PRINCIPAL UNIFICADO -->
+    <header class="cbe-detail-header epp-header">
+  <div class="cbe-detail-header-inner">
+    <div class="cbe-detail-branding">
+      <a class="cbe-detail-brand" href="index.html" aria-label="CBE SOLUCIONES E.I.R.L. — Inicio"><img src="Imagenes/Logo.jpg" alt="CBE SOLUCIONES E.I.R.L."></a>
+      <nav class="cbe-detail-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#servicios-fotografias">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+    <div class="cbe-detail-actions"><div class="epp-header-actions" style="display: flex; align-items: center; gap: 15px; position: relative;">
+            <button type="button" data-cart-trigger aria-controls="cartModalPanel" aria-expanded="false" aria-label="Abrir carrito" style="position: relative; background-color: #f1f5f9; padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; border: 1px solid #cbd5e1;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cartBadgeCount" style="position: absolute; top: -6px; right: -6px; background-color: #ff6600; color: #ffffff; font-size: 11px; font-weight: 800; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff;">0</span>
+            </button>
+
+            <button type="button" data-cart-trigger aria-controls="cartModalPanel" aria-expanded="false" style="background-color: #ff6600; color: #ffffff; padding: 8px 18px; border: 0; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 14px; font-family: sans-serif; cursor: pointer; box-shadow: 0 2px 4px rgba(255,102,0,0.3);">
+                Cotizar Servicios
+            </button>
+        </div></div>
+  </div>
+</header>
+
+    <main class="container">
+        <!-- Vista Principal de Detalle con Galería Amplia -->
+        <section class="detail-grid">
+            <div class="gallery">
+                <div class="thumbs">
+        <img src="Imagenes/EPP_15.png" alt="Vista 1" class="active" onclick="cambiarImagen(this)">
+        <img src="Imagenes/EPP_18.png" alt="Vista 2" onclick="cambiarImagen(this)">
+        <img src="Imagenes/EPP_8.png" alt="Vista 3" onclick="cambiarImagen(this)">
+        <img src="Imagenes/EPP_9.png" alt="Vista 4" onclick="cambiarImagen(this)">
+                </div>
+                <div class="main-img">
+        <img id="imgPrincipal" src="Imagenes/EPP_1.jpeg" alt="Venta de EPP Principal" style="height: 480px !important; width: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+
+            <div class="info-content">
+                <span class="tag">SST / SSOMA</span>
+                <h1>Venta de Equipos de Protección Personal (EPP)</h1>
+                
+                <p><strong>Descripción:</strong> En CBE SOLUCIONES E.I.R.L. ofrecemos Equipos de Protección Personal (EPP) para obras de construcción civil, priorizando la calidad, la seguridad y la protección de tus trabajadores.
+                    Suministramos Equipos de Protección Personal (EPP) homologados y certificados bajo normativas ANSI e ISO para garantizar la máxima seguridad física de los trabajadores en obras, fábricas e industria en general.</p>
+                
+                <p>Calidad y respaldo: consulta por equipos con certificados de conformidad y documentación técnica del fabricante, según el producto y la norma aplicable.                     
+                ¡Solicita tu cotización hoy! Atendemos pedidos para empresas, contratistas y obras de construcción.
+                Contamos con stock disponible para entrega inmediata de cascos, calzado de seguridad, guantes de maniobra, protección auditiva, respiratoria y protección contra caídas.</p>
+                
+                <p style="font-size: 13px; color: #64748b; margin-top: 20px;"><strong>C.B.E. SOLUCIONES E.I.R.L.</strong><br>Prevención y seguridad para un futuro más seguro.</p>
+            </div>
+        </section>
+
+        <!-- Catálogo de productos con carrito -->
+        <section class="epp-catalog">
+            <h2>Selecciona tus Equipos para Cotizar</h2>
+            
+            <div class="epp-grid">
+
+    <!-- Ítem 1: Lentes se seguridad -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_10.png" alt="Lentes se seguridad y sobrelentes" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Lentes de seguridad y sobrelentes</h4>
+        <div class="price">S/ 7.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="lentes-seguridad-sobrelentes" data-cart-name="Lentes de seguridad y sobrelentes" data-cart-price="7.00">+ Añadir al Carrito</button>
+    </div>
+
+    <!-- Ítem 2: Zapatos industriales -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_11.png" alt="Zapatos industriales" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Zapatos industriales</h4>
+        <div class="price">S/ 135.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ par</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="zapatos-industriales" data-cart-name="Zapatos industriales" data-cart-price="135.00">+ Añadir al Carrito</button>
+    </div>
+
+    <!-- Ítem 3: Guantes de seguridad -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_12.png" alt="Guantes de seguridad" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Guantes de seguridad</h4>
+        <div class="price">S/ 7.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Par.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+        <button class="btn-add" data-cart-add data-cart-id="guantes-seguridad" data-cart-name="Guantes de seguridad" data-cart-price="7.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 4: Respirador de doble via -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_13.png" alt="Guantes de Cuero" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Respirador de doble via</h4>
+        <div class="price">S/ 28.50 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="respirador-doble-via" data-cart-name="Respirador de doble via" data-cart-price="28.50">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 5: Respirador de doble via para polvos -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_14.png" alt="Respirador de doble via para polvos" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Respirador de doble via para polvos</h4>
+        <div class="price">S/ 25.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="respirador-polvos" data-cart-name="Respirador de doble via para polvos" data-cart-price="25.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 6: Chaleco drill naranja -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_20.png" alt="Chaleco drill naranja" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Chaleco drill naranja</h4>
+        <div class="price">S/ 21.00  <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="chaleco-drill-naranja" data-cart-name="Chaleco drill naranja" data-cart-price="21.00">+ Añadir al Carrito</button>
+    </div>
+ <!-- Ítem 7: Chaleco Panople Nacional -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_21.png" alt="Chaleco Panople Nacional" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Chaleco Panople Nacional</h4>
+        <div class="price">S/ 40.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="chaleco-panople-nacional" data-cart-name="Chaleco Panople Nacional" data-cart-price="40.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 8: Camisa Oxford manga larga azul marino -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_22.png" alt="Camisa Oxford manga larga azul marino" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga azul marino</h4>
+        <div class="price">S/ 30.10 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-marino" data-cart-name="Camisa Oxford manga larga azul marino" data-cart-price="30.10">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 9: Camisa Oxford manga larga Blanco nacional -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_23.png" alt="Camisa Oxford manga larga Blanco nacional" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga Blanco nacional</h4>
+        <div class="price">S/ 26.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-blanco" data-cart-name="Camisa Oxford manga larga Blanco nacional" data-cart-price="26.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 10: Camisa Oxford Azul Italiano nacional -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_24.png" alt="Camisa Oxford Azul Italiano nacional" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford Azul Italiano nacional</h4>
+        <div class="price">S/ 27.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-italiano" data-cart-name="Camisa Oxford Azul Italiano nacional" data-cart-price="27.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 11: Camisa Oxford Celeste BB nacional -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_25.png" alt="Camisa Oxford Celeste BB nacional" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford Celeste BB nacional</h4>
+        <div class="price">S/ 27.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-celeste" data-cart-name="Camisa Oxford Celeste BB nacional" data-cart-price="27.00">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 8: Camisa Oxford manga larga azul marino -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_22.png" alt="Camisa Oxford manga larga azul marino" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga azul marino</h4>
+        <div class="price">S/ 30.10 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-marino" data-cart-name="Camisa Oxford manga larga azul marino" data-cart-price="30.10">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 8: Camisa Oxford manga larga azul marino -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_22.png" alt="Camisa Oxford manga larga azul marino" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga azul marino</h4>
+        <div class="price">S/ 30.10 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-marino" data-cart-name="Camisa Oxford manga larga azul marino" data-cart-price="30.10">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 8: Camisa Oxford manga larga azul marino -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_22.png" alt="Camisa Oxford manga larga azul marino" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga azul marino</h4>
+        <div class="price">S/ 30.10 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-marino" data-cart-name="Camisa Oxford manga larga azul marino" data-cart-price="30.10">+ Añadir al Carrito</button>
+    </div>
+    <!-- Ítem 8: Camisa Oxford manga larga azul marino -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_22.png" alt="Camisa Oxford manga larga azul marino" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga azul marino</h4>
+        <div class="price">S/ 30.10 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-azul-marino" data-cart-name="Camisa Oxford manga larga azul marino" data-cart-price="30.10">+ Añadir al Carrito</button>
+    </div>
+
+    <!-- Ítem 9: Camisa Oxford manga larga Blanco nacional -->
+    <div class="epp-card">
+        <img src="Imagenes/EPP_23.png" alt="Camisa Oxford manga larga Blanco nacional" onclick="ampliarImagenTarjeta(this)" style="cursor: pointer;">
+        <h4>Camisa Oxford manga larga Blanco nacional</h4>
+        <div class="price">S/ 26.00 <small style="font-size: 12px; font-weight: normal; color: #64748b;">/ Un.</small></div>
+        
+        <!-- Control - y + -->
+        <div class="cant-control" style="display: flex; align-items: center; justify-content: center; gap: 5px; margin: 10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly style="width: 45px; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; font-weight: bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad" style="width: 30px; height: 30px; background: #e2e8f0; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">+</button>
+        </div>
+
+        <button class="btn-add" data-cart-add data-cart-id="camisa-oxford-blanco" data-cart-name="Camisa Oxford manga larga Blanco nacional" data-cart-price="26.00">+ Añadir al Carrito</button>
+    </div>
+
+    <!-- Espacios reservados para nuevos productos EPP; habilitar solo al completar sus datos comerciales. -->
+    <div class="epp-card" id="NUEVO-EPP-01" data-slot-id="NUEVO-EPP-01">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-01" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-01" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-01" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-01" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-02" data-slot-id="NUEVO-EPP-02">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-02" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-02" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-02" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-02" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-03" data-slot-id="NUEVO-EPP-03">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-03" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-03" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-03" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-03" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-04" data-slot-id="NUEVO-EPP-04">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-04" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-04" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-04" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-04" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-05" data-slot-id="NUEVO-EPP-05">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-05" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-05" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-05" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-05" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-06" data-slot-id="NUEVO-EPP-06">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-06" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-06" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-06" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-06" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-07" data-slot-id="NUEVO-EPP-07">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-07" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-07" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-07" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-07" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-08" data-slot-id="NUEVO-EPP-08">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-08" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-08" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-08" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-08" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-09" data-slot-id="NUEVO-EPP-09">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-09" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-09" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-09" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-09" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-10" data-slot-id="NUEVO-EPP-10">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-10" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-10" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-10" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-10" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-11" data-slot-id="NUEVO-EPP-11">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-11" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-11" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-11" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-11" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+    <div class="epp-card" id="NUEVO-EPP-12" data-slot-id="NUEVO-EPP-12">
+        <div role="img" aria-label="Imagen pendiente" style="width:100%; height:160px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:6px; margin-bottom:10px; color:#64748b;">Imagen pendiente</div>
+        <h4>Nombre pendiente</h4>
+        <div class="price">Precio pendiente</div>
+        <div class="cant-control" style="display:flex; align-items:center; justify-content:center; gap:5px; margin:10px 0;">
+            <button type="button" data-cart-quantity-step="-1" aria-label="Reducir cantidad NUEVO-EPP-12" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">-</button>
+            <input type="number" value="1" min="1" class="input-cant-epp" readonly aria-label="Cantidad NUEVO-EPP-12" style="width:45px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; padding:4px; font-weight:bold;">
+            <button type="button" data-cart-quantity-step="1" aria-label="Aumentar cantidad NUEVO-EPP-12" style="width:30px; height:30px; background:#e2e8f0; border:0; border-radius:4px; font-weight:bold; cursor:pointer;">+</button>
+        </div>
+        <button type="button" class="btn-add" data-cart-add data-cart-id="nuevo-epp-12" data-cart-name="Nombre pendiente" disabled aria-disabled="true" title="Completa producto, imagen y precio para habilitar" style="opacity:.55; cursor:not-allowed;">+ Añadir al carrito</button>
+    </div>
+
+   
+</div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="modalZoomEPP" class="modal-zoom-epp" onclick="if (event.target === this) cerrarZoomEPP()" style="display:none; position:fixed; inset:0; z-index:3000; background:rgba(0,0,0,0.88); align-items:center; justify-content:center; padding:20px; box-sizing:border-box;">
+        <button type="button" class="cerrar-modal-epp" aria-label="Cerrar imagen ampliada" onclick="cerrarZoomEPP()" style="position:absolute; top:15px; right:22px; border:0; background:none; color:#fff; font-size:36px; cursor:pointer;">&times;</button>
+        <img class="modal-contenido-epp" id="imgZoomAmpliada" alt="Imagen ampliada del producto" style="max-width:92%; max-height:92%; object-fit:contain; border-radius:8px;">
+    </div>
+    <div id="cartModalOverlay" data-cart-overlay aria-hidden="true" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:2000;"></div>
+    <div id="cartModalPanel" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle" aria-hidden="true" tabindex="-1" inert style="position:fixed; top:0; right:-420px; width:380px; max-width:90%; height:100%; background:#fff; box-shadow:-4px 0 15px rgba(0,0,0,0.15); z-index:2001; transition:right 0.3s ease; display:flex; flex-direction:column; font-family:sans-serif;">
+      <div style="padding:20px; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+        <div id="cartModalTitle" style="font-size:18px; font-weight:800; color:#1e293b;">Mi Pedido / Cotización</div>
+        <button type="button" data-cart-close aria-label="Cerrar carrito" style="background:none; border:0; font-size:24px; color:#94a3b8; cursor:pointer;">&times;</button>
+      </div>
+      <div id="cartItemsContainer" role="list" aria-live="polite" style="flex:1; padding:20px; overflow-y:auto; text-align:center; color:#64748b;"><p style="margin-top:40px; font-size:15px;">Tu carrito está vacío.</p></div>
+      <div style="padding:20px; border-top:1px solid #f1f5f9;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size:18px; font-weight:800; color:#1e293b;"><span>Total estimado:</span><span id="cartTotalDisplay">S/ 0.00</span></div>
+        <small id="cartQuoteNotice" hidden></small>
+        <button type="button" data-cart-checkout style="width:100%; background:#25d366; color:#fff; border:0; padding:12px; border-radius:8px; font-size:15px; font-weight:800; cursor:pointer;">Enviar Pedido a WhatsApp</button>
+      </div>
+    </div>
+    <script>
+      
+
+      function ampliarImagenTarjeta(imagen) {
+        const modal = document.getElementById('modalZoomEPP');
+        const ampliada = document.getElementById('imgZoomAmpliada');
+        if (!modal || !ampliada || !imagen) return;
+        ampliada.src = imagen.currentSrc || imagen.src;
+        ampliada.alt = imagen.alt || 'Imagen ampliada del producto';
+        modal.style.display = 'flex';
+      }
+
+      function cerrarZoomEPP() {
+        const modal = document.getElementById('modalZoomEPP');
+        const ampliada = document.getElementById('imgZoomAmpliada');
+        if (!modal) return;
+        modal.style.display = 'none';
+        if (ampliada) ampliada.removeAttribute('src');
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') cerrarZoomEPP();
+      });
+
+      function cambiarImagen(elemento) {
+        document.getElementById('imgPrincipal').src = elemento.src;
+        document.querySelectorAll('.thumbs img').forEach((imagen) => imagen.classList.remove('active'));
+        elemento.classList.add('active');
+      }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

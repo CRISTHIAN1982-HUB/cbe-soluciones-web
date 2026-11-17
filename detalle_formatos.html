@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital de Formatos SST | CBE Soluciones E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; }
+        
+        /* Contenedor principal */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        
+      .formatos-hero { background: transparent !important; color: #1e293b; padding: 20px 10px 40px 10px; text-align: center; margin-bottom: 20px; box-shadow: none !important; }
+.formatos-hero h1 { font-size: 32px; margin-bottom: 15px; color: #1e293b; }
+.formatos-hero h1 span { color: #ff6600; }
+.formatos-hero p { font-size: 16px; color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+/* Banner original completo, sin recortes ni desplazamiento fuera del documento. */
+.formatos-hero-img {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center;
+    display: block;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+        /* Filtros de Categorías */
+        .filtros-container { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto 28px; background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        
+        .categorias-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .chip { background-color: #f1f5f9; color: #475569; border: none; padding: 7px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .chip:hover, .chip.active { background-color: #ff6600; color: white; }
+
+        /* Grilla de Documentos / Formatos */
+        .formatos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 300px)); justify-content: center; gap: 14px; width: 100%; max-width: 1300px; box-sizing: border-box; margin: 0 auto 42px; padding: 0 20px; }
+        .formato-card { min-width: 0; max-width: 300px; box-sizing: border-box; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .formato-card[hidden] { display: none; }
+        .formato-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.07); }
+        
+        .formato-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; margin-bottom: 10px; }
+        .formato-cat { font-size: 11px; font-weight: 700; color: #ff6600; text-transform: uppercase; background: #fff7ed; padding: 4px 8px; border-radius: 6px; }
+        .formato-badge { font-size: 10px; font-weight: 700; background: #e2e8f0; color: #475569; padding: 4px 7px; border-radius: 4px; }
+        
+        .formato-card h3 { font-size: 16px; font-weight: 700; color: #1e293b; margin: 0 0 8px 0; }
+        .formato-card p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 14px; }
+        
+        .formato-footer { display: flex; gap: 8px; align-items: center; }
+        .btn-previa { flex: 1; background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; padding: 8px 6px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s; }
+        .btn-previa:hover { background: #e2e8f0; }
+        .btn-descargar { flex: 1; background: #ff6600; color: white; border: none; padding: 8px 6px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s; }
+        .btn-descargar:hover { background: #e65c00; }
+        .formato-footer [aria-disabled="true"] { pointer-events: none; opacity: 0.55; cursor: not-allowed; }
+
+        @media (max-width: 1024px) {
+            .formatos-grid { grid-template-columns: repeat(2, minmax(0, 300px)); }
+        }
+        @media (max-width: 600px) {
+            .container { margin-top: 24px; padding-right: 14px; padding-left: 14px; }
+            .filtros-container { padding: 14px; }
+            .formatos-grid { grid-template-columns: minmax(0, 300px); justify-content: center; gap: 14px; padding-right: 14px; padding-left: 14px; }
+            .formato-card { padding: 15px; }
+        }
+
+        /* Sección de Planes de Suscripción */
+        .planes-section { margin-top: 60px; text-align: center; }
+        .planes-section h2 { font-size: 28px; color: #1e293b; margin-bottom: 10px; }
+        .planes-section p { color: #64748b; margin-bottom: 40px; font-size: 15px; }
+        
+        .planes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; text-align: left; }
+        .plan-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; }
+        .plan-card.featured { border-color: #ff6600; box-shadow: 0 8px 24px rgba(255,102,0,0.15); }
+        .plan-card.featured::before { content: 'MÁS POPULAR'; position: absolute; top: -12px; right: 25px; background: #ff6600; color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; }
+        
+        .plan-card h3 { font-size: 20px; color: #1e293b; margin-top: 0; margin-bottom: 5px; }
+        .plan-card .precio { font-size: 32px; font-weight: 800; color: #ff6600; margin: 15px 0; }
+        .plan-card ul { padding-left: 20px; color: #475569; font-size: 14px; line-height: 1.8; margin-bottom: 25px; }
+        .btn-plan { display: block; width: 100%; background: #0b0f19; color: white; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+        .btn-plan:hover { background: #ff6600; }
+    </style>
+  <link rel="stylesheet" href="detalle-header.css">
+</head>
+<body class="cbe-detail-page">
+
+    <!-- BARRA SUPERIOR DE CONTACTOS -->
+    <div class="cbe-detail-topbar">
+  <div class="cbe-detail-topbar-inner">
+    <div class="cbe-detail-contacts">
+      <a href="tel:+51960139960">+51 960 139 960</a>
+      <a href="mailto:cbesoluciones@gmail.com">cbesoluciones@gmail.com</a>
+      <span>Lima, Perú</span>
+    </div>
+    <span class="cbe-detail-company">CBE SOLUCIONES E.I.R.L.</span>
+  </div>
+</div>
+
+    <!-- ENCABEZADO PRINCIPAL UNIFICADO -->
+    <header class="cbe-detail-header">
+  <div class="cbe-detail-header-inner">
+    <div class="cbe-detail-branding">
+      <a class="cbe-detail-brand" href="index.html" aria-label="CBE SOLUCIONES E.I.R.L. — Inicio"><img src="Imagenes/Logo.jpg" alt="CBE SOLUCIONES E.I.R.L."></a>
+      <nav class="cbe-detail-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#servicios-fotografias">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+</header>
+    <!-- BANNER ANCHO AMPLIO -->
+    <div>
+        <img src="Imagenes/detalle_formato_pincipal.png" alt="Biblioteca Digital de Formatos SST" class="formatos-hero-img">
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL DEL RESTO DE LA PÁGINA -->
+    <main class="container">
+        <!-- Títulos, categorías y tarjetas -->
+    </main>
+
+        <!-- FILTROS POR CATEGORÍA -->
+        <section class="filtros-container">
+            <div class="categorias-chips">
+                <button type="button" class="chip active" data-category-filter="all" aria-pressed="true">Todos</button>
+                <button type="button" class="chip" data-category-filter="sgsst" aria-pressed="false">SGSST</button>
+                <button type="button" class="chip" data-category-filter="matrices-iperc" aria-pressed="false">Matrices IPERC</button>
+                <button type="button" class="chip" data-category-filter="ats" aria-pressed="false">ATS</button>
+                <button type="button" class="chip" data-category-filter="petar" aria-pressed="false">PETAR</button>
+                <button type="button" class="chip" data-category-filter="inspecciones" aria-pressed="false">Inspecciones</button>
+                <button type="button" class="chip" data-category-filter="investigacion-accidentes" aria-pressed="false">Investigación de Accidentes</button>
+                <button type="button" class="chip" data-category-filter="capacitaciones" aria-pressed="false">Capacitaciones</button>
+                <button type="button" class="chip" data-category-filter="planes-emergencia" aria-pressed="false">Planes de Emergencia</button>
+                <button type="button" class="chip" data-category-filter="formatos-varios" aria-pressed="false">Formatos Varios</button>
+            </div>
+        </section>
+
+        <!-- GRILLA DE FORMATOS -->
+        <section class="formatos-grid">
+            
+            <!-- Tarjeta 1 -->
+            <div class="formato-card" data-category="matrices-iperc">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">IPERC</span>
+                        <span class="formato-badge">Excel (.xlsx)</span>
+                    </div>
+                    <h3>Matriz IPERC Base - Sector Construcción</h3>
+                    <p>Matriz completa de Identificación de Peligros, Evaluación de Riesgos y Medidas de Control adaptada a obras civiles.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="formato-card" data-category="ats">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">ATS</span>
+                        <span class="formato-badge">Word (.docx)</span>
+                    </div>
+                    <h3>Formato de Análisis de Trabajo Seguro (ATS)</h3>
+                    <p>Formato estándar para la evaluación diaria de riesgos antes de iniciar tareas operativas o de alto riesgo en campo.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="formato-card" data-category="petar">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">PETAR</span>
+                        <span class="formato-badge">PDF / Word</span>
+                    </div>
+                    <h3>Permiso de Trabajo de Alto Riesgo (PETAR)</h3>
+                    <p>Permisos específicos para trabajos en caliente, altura, espacios confinados, izaje y excavaciones profundas.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="formato-card" data-category="planes-emergencia">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Emergencias</span>
+                        <span class="formato-badge">Word / Excel</span>
+                    </div>
+                    <h3>Plan de Respuesta ante Emergencias y Simulacros</h3>
+                    <p>Estructura oficial para la organización de brigadas, protocolos de evacuación y reportes de simulacros.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+            
+             <!-- Tarjeta 5-->
+            <div class="formato-card" data-category="sgsst">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Documentos de Gestion en SSOMA</span>
+                        <span class="formato-badge">Word / Excel</span>
+                    </div>
+                    <h3>Planes de Seguridad y Salud en el trabajo</h3>
+                    <p>Estructura del Plan conforme al decreto supremo N° 011 - 2019 TR</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+
+              <!-- Tarjeta 6-->
+            <div class="formato-card" data-category="sgsst">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Documentos de Gestion en SSOMA</span>
+                        <span class="formato-badge">Word / Excel</span>
+                    </div>
+                    <h3>Procedimientos de trabajo seguro</h3>
+                    <p>Documentos que establecen paso a paso la forma correcta y segura de ejecutar una actividad.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+
+             <!-- Tarjeta 7-->
+            <div class="formato-card" data-category="sgsst">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Documentos de Gestion en SSOMA</span>
+                        <span class="formato-badge">Power Point / CAD</span>
+                    </div>
+                    <h3>Mapas de Riesgo y Planos de Evacuacion</h3>
+                    <p>Herramientas gráficas que identifican los peligros y riesgos presentes en las instalaciones, señalizando las zonas seguras, rutas de evacuación, salidas de emergencia y ubicación de equipos de respuesta para facilitar una evacuación rápida y segura ante cualquier emergencia.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+            <!-- Tarjeta 8-->
+            <div class="formato-card" data-category="sgsst">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Documentos de Gestion en SSOMA</span>
+                        <span class="formato-badge">Word</span>
+                    </div>
+                    <h3>Politicas de Seguridad y Salud en el trabajo</h3>
+                    <p>Documentos que establecen los compromisos y principios de la empresa para prevenir accidentes, proteger la salud de los trabajadores, cumplir la normativa vigente y promover una cultura de prevención y mejora continua en todas sus actividades.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Vista Previa</a>
+                    <a class="btn-descargar" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Descargar Pro</a>
+                </div>
+            </div>
+            <div class="formato-card" id="provisional-inspecciones-01" data-category="inspecciones-01">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">INSPECCIONES</span>
+                        <span class="formato-badge">Word (.docx)</span>
+                    </div>
+                    <h3>Formato provisional de inspección de equipos</h3>
+                    <p>Formato para registrar inspecciones, verificar las condiciones de los equipos de trabajo e identificar observaciones.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" aria-disabled="true" tabindex="-1">Vista Previa</a>
+                    <a class="btn-descargar" aria-disabled="true" tabindex="-1">Descargar Pro</a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="formato-card" id="provisional-investigacion-accidentes-01" data-category="investigacion-accidentes-01">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">INVESTIGACIÓN DE ACCIDENTES</span>
+                        <span class="formato-badge">Excel (.xlsx)</span>
+                    </div>
+                    <h3>Registro provisional de incidente o accidente</h3>
+                    <p>Formato para registrar incidentes y accidentes laborales, documentar los hechos y facilitar su seguimiento.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" aria-disabled="true" tabindex="-1">Vista Previa</a>
+                    <a class="btn-descargar" aria-disabled="true" tabindex="-1">Descargar Pro</a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="formato-card" id="provisional-capacitaciones-01" data-category="capacitaciones-01">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">CAPACITACIONES</span>
+                        <span class="formato-badge">Word / Excel</span>
+                    </div>
+                    <h3>Plan provisional de capacitaciones SST</h3>
+                    <p>Herramienta para programar y organizar las actividades de capacitación en Seguridad y Salud en el Trabajo.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" aria-disabled="true" tabindex="-1">Vista Previa</a>
+                    <a class="btn-descargar" aria-disabled="true" tabindex="-1">Descargar Pro</a>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="formato-card" id="provisional-formatos-varios-01" data-category="formatos-varios-01">
+                <div>
+                    <div class="formato-header">
+                        <span class="formato-cat">Formatos Varios</span>
+                        <span class="formato-badge">Word / Excel</span>
+                    </div>
+                    <h3>Formatos varios de SST</h3>
+                    <p>Colección de formatos complementarios para la gestión de Seguridad y Salud en el Trabajo.</p>
+                </div>
+                <div class="formato-footer">
+                    <a class="btn-previa" aria-disabled="true" tabindex="-1">Vista Previa</a>
+                    <a class="btn-descargar" aria-disabled="true" tabindex="-1">Descargar Pro</a>
+                </div>
+            </div>
+
+            <p class="formatos-empty" role="status" aria-live="polite" hidden>No hay documentos disponibles en esta categor??a.</p>
+        </section>
+
+        <!-- PLANES DE SUSCRIPCIÓN -->
+        <section class="planes-section">
+            <h2>Elige tu Plan de Acceso Digital</h2>
+            <p>Obtén acceso ilimitado a toda nuestra biblioteca de formatos técnicos actualizados.</p>
+
+            <div class="planes-grid">
+                
+                <!-- Plan Gratuito -->
+                <div class="plan-card">
+                    <div>
+                        <h3>Plan Gratuito</h3>
+                        <div class="precio">S/ 0.00</div>
+                        <ul>
+                            <li>Acceso a 2 formatos de muestra</li>
+                            <li>Visualización previa limitada</li>
+                            <li>Soporte estándar por correo</li>
+                        </ul>
+                    </div>
+                    <a class="btn-plan" style="background: #64748b;" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Comenzar Gratis</a>
+                </div>
+
+                <!-- Plan Mensual Pro -->
+                <div class="plan-card featured">
+                    <div>
+                        <h3>Plan Mensual </h3>
+                        <div class="precio">S/ 20.00 <small style="font-size: 14px; font-weight: normal; color: #64748b;">/ mes</small></div>
+                        <ul>
+                            <li>Acceso total a los 11 módulos de formatos</li>
+                            <li>Descargas ilimitadas en Excel, Word y PDF</li>
+                            <li>Actualizaciones normativas constantes</li>
+                            <li>Soporte técnico prioritario</li>
+                        </ul>
+                    </div>
+                    <a class="btn-plan" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Suscribirme Ahora</a>
+                </div>
+
+                <!-- Plan Anual -->
+                <div class="plan-card">
+                    <div>
+                        <h3>Plan Anual Corporativo</h3>
+                        <div class="precio">S/ 120.00 <small style="font-size: 14px; font-weight: normal; color: #64748b;">/ año</small></div>
+                        <ul>
+                            <li>Todos los beneficios del Plan Pro</li>
+                            <li>Ahorro equivalente a 3 meses</li>
+                            <li>Acceso multiusuario para supervisores SSOMA</li>
+                            <li>Formatos editables exclusivos para obras</li>
+                        </ul>
+                    </div>
+                    <a class="btn-plan" role="link" aria-disabled="true" tabindex="-1" title="Pendiente de configurar en esta versión de prueba">Elegir Plan Anual</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer style="background-color: #0b0f19; color: white; padding: 30px; text-align: center; margin-top: 80px; font-size: 14px;">
+        <p>© 2026 CBE SOLUCIONES E.I.R.L. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        (() => {
+            const filters = Array.from(document.querySelectorAll('[data-category-filter]'));
+            const cards = Array.from(document.querySelectorAll('.formato-card[data-category]'));
+            const emptyMessage = document.querySelector('.formatos-empty');
+
+            function applyCategoryFilter(category) {
+                let visibleCount = 0;
+
+                cards.forEach((card) => {
+                    const matches = category === 'all' || card.dataset.category === category || card.dataset.category.startsWith(`${category}-`);
+                    card.hidden = !matches;
+                    if (matches) visibleCount += 1;
+                });
+
+                filters.forEach((filter) => {
+                    const selected = filter.dataset.categoryFilter === category;
+                    filter.classList.toggle('active', selected);
+                    filter.setAttribute('aria-pressed', String(selected));
+                });
+
+                if (emptyMessage) emptyMessage.hidden = visibleCount !== 0;
+            }
+
+            filters.forEach((filter) => {
+                filter.addEventListener('click', () => {
+                    applyCategoryFilter(filter.dataset.categoryFilter);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

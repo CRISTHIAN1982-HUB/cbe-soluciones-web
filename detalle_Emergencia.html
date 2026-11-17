@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Emergencia - CBE Soluciones E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       /* Encabezado fijo y estático */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color:white;
+            color: black;
+            padding: 8px 40px; /* <-- Modificado aquí de 15px a 8px para hacerlo más angosto */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .logo img {
+            height: 85px !important;
+            width: auto;
+            display: block;
+        }
+        nav a {
+    color: #000000 !important; /* Fuerza el color negro en los textos del menú */
+    text-decoration: none;
+    font-weight: 500;
+}
+nav a {
+    font-size: 17px !important;     /* Aumenta el tamaño de las letras */
+    font-weight: 700 !important;    /* Las coloca en negrita marcada */
+    color: #1e293b !important;      /* Color oscuro y elegante */
+    text-decoration: none;
+}
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Contenedor de la vista de detalles */
+        .detalle-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .galeria-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .miniatura-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .miniatura-img {
+            width: 85px;
+            height: 70px;
+            object-fit: cover; /* Las miniaturas sí mantienen un formato uniforme */
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        .miniatura-img:hover, .miniatura-img.active {
+            border-color: #f97316;
+        }
+        .imagen-principal-container {
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .imagen-principal {
+            width: 100%;
+            height: auto; /* Permite que la imagen mantenga su tamaño real sin recortarse */
+            max-height: 450px;
+            object-fit: contain; /* Clave para que se vea toda la imagen completa */
+            display: block;
+        }
+        .info-producto h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .info-producto p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .btn-cotizacion {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 30px;
+            transition: background 0.3s;
+        }
+        .btn-cotizacion:hover {
+            background-color: #2563eb;
+        }
+        .banner-descuento {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fde68a;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .detalle-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <link rel="stylesheet" href="detalle-header.css">
+</head>
+<body class="cbe-detail-page">
+<!-- BARRA SUPERIOR DE CONTACTOS -->
+  <div class="cbe-detail-topbar">
+  <div class="cbe-detail-topbar-inner">
+    <div class="cbe-detail-contacts">
+      <a href="tel:+51960139960">+51 960 139 960</a>
+      <a href="mailto:cbesoluciones@gmail.com">cbesoluciones@gmail.com</a>
+      <span>Lima, Perú</span>
+    </div>
+    <span class="cbe-detail-company">CBE SOLUCIONES E.I.R.L.</span>
+  </div>
+</div>
+    <!-- ENCABEZADO ESTÁTICO UNIFICADO -->
+    <header class="cbe-detail-header">
+  <div class="cbe-detail-header-inner">
+    <div class="cbe-detail-branding">
+      <a class="cbe-detail-brand" href="index.html" aria-label="CBE SOLUCIONES E.I.R.L. — Inicio"><img src="Imagenes/Logo.jpg" alt="CBE SOLUCIONES E.I.R.L."></a>
+      <nav class="cbe-detail-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#servicios-fotografias">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="detalle-container">
+        <!-- GALERÍA INTERACTIVA -->
+        <div class="galeria-wrapper">
+            <div class="miniatura-lista">
+                <img src="Imagenes/Plan_Brigada_4.png" alt="Planes de emergencia" class="miniatura-img active" onclick="cambiarImagen(this)">
+                <img src="Imagenes/Plan_Brigada_6.png" alt="Mapa de riesgos" class="miniatura-img" onclick="cambiarImagen(this)">
+                <img src="Imagenes/Plan_Brigada_7.png" alt="Brigadas y simulacros" class="miniatura-img" onclick="cambiarImagen(this)">
+                 <img src="Imagenes/Emergencia_.jfif" alt="Capacitacion Brigada" class="miniatura-img" onclick="cambiarImagen(this)">
+            </div>
+            
+           <div class="imagen-principal-container" style="width: 100%; height: auto; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+    <img id="imagenGrande" src="Imagenes/Plan_Brigada_2.png" alt="Vista principal" class="imagen-principal" style="width: 100% !important; height: 380px !important; object-fit: cover !important; border-radius: 8px;">
+</div>
+        </div>
+
+        <!-- INFORMACIÓN Y DESCRIPCIÓN -->
+        <div class="info-producto">
+            <span style="color: #f97316; font-weight: bold; font-size: 14px;">SST / SSOMA</span>
+            <h1>Planes de Emergencia</h1>
+            <p><strong>Descripción:</strong> Desarrollamos Planes de contingencias y repuesta a Emergencias, orientados a preparar a las organizaciones para responder de manera rápida y organizada ante situaciones como incendios, sismos, accidentes, derrames y otras emergencias.</p>
+            <p>Elaboramos procedimientos de actuación ante emergencias, Mapas de riesgo, presupesto para planes de emergencias, capacitaciones, organización de brigadas, protocolos de comunicación y recursos de emergencia, contribuyendo a proteger la vida de los trabajadores y reducir los riesgos y daños ante una emergencia.</p>
+            <p><strong>C.B.E. SOLUCIONES E.I.R.L.</strong><br>Prevención y seguridad para un futuro más seguro.</p>
+<a href="https://wa.me/51960139960?text=Hola%20CBE%20SOLUCIONES%20E.I.R.L.,%20deseo%20solicitar%20una%20cotización%20para%20el%20servicio%20de%20Plan%20de%20Emergencia." 
+   target="_blank" 
+   rel="noopener noreferrer"
+   style="background-color: #ff6600; color: white; padding: 14px 24px; border: none; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); cursor: pointer;">
+    💬 Solicitar Cotización del Servicio
+</a>
+
+            <div class="banner-descuento">
+                <h3 style="color: #b45309; margin-bottom: 5px;">¡Descuento especial en tu Plan de Emergencia!</h3>
+                <p style="font-size: 13px; margin: 0; color: #78350f;">Incluye procedimientos de respuesta, evacuación, brigadas y organización ante emergencias.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script>
+        function cambiarImagen(element) {
+            var imagenGrande = document.getElementById('imagenGrande');
+            imagenGrande.src = element.src;
+
+            var miniaturas = document.querySelectorAll('.miniatura-img');
+            miniaturas.forEach(function(img) {
+                img.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>

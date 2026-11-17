@@ -1,0 +1,167 @@
+/* Encabezado compartido exclusivamente por las subpáginas detalle_. */
+body.cbe-detail-page { padding-top: 0 !important; }
+
+body.cbe-detail-page .cbe-detail-topbar,
+body.cbe-detail-page header.cbe-detail-header,
+body.cbe-detail-page .cbe-detail-topbar *,
+body.cbe-detail-page header.cbe-detail-header * { box-sizing: border-box; }
+
+body.cbe-detail-page .cbe-detail-topbar {
+  width: 100%;
+  margin: 0;
+  background: #0b0f19;
+  color: #fff;
+  font: 12px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body.cbe-detail-page .cbe-detail-topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6px 16px;
+}
+
+body.cbe-detail-page .cbe-detail-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 16px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.cbe-detail-page .cbe-detail-topbar a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: #fff;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+body.cbe-detail-page .cbe-detail-company {
+  color: #ff9a57;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+body.cbe-detail-page header.cbe-detail-header {
+  display: block;
+  position: relative !important;
+  inset: auto !important;
+  width: 100%;
+  margin: 0;
+  padding: 0 !important;
+  background: #fff !important;
+  color: #1e293b;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, .05);
+  z-index: 1000;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body.cbe-detail-page .cbe-detail-header-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+body.cbe-detail-page .cbe-detail-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+body.cbe-detail-page .cbe-detail-brand { display: inline-block; max-width: 100%; }
+
+body.cbe-detail-page header.cbe-detail-header .cbe-detail-brand img {
+  display: block;
+  width: auto !important;
+  max-width: 100%;
+  height: 78px !important;
+  object-fit: contain !important;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+}
+
+body.cbe-detail-page header.cbe-detail-header nav.cbe-detail-nav {
+  display: flex !important;
+  position: static !important;
+  inset: auto;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(10px, 2vw, 24px) !important;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff !important;
+  box-shadow: none;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+body.cbe-detail-page header.cbe-detail-header nav.cbe-detail-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  color: #1e293b !important;
+  background: transparent;
+  opacity: 1;
+  font-size: inherit !important;
+  font-weight: 600 !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body.cbe-detail-page header.cbe-detail-header nav.cbe-detail-nav a:hover {
+  color: #9a3900 !important;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+body.cbe-detail-page .cbe-detail-actions { min-width: 0; max-width: 100%; }
+body.cbe-detail-page .cbe-detail-actions > div {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px !important;
+  max-width: 100%;
+}
+
+body.cbe-detail-page .cbe-detail-header :focus-visible {
+  outline: 3px solid #9a3900;
+  outline-offset: 3px;
+}
+
+body.cbe-detail-page .cbe-detail-topbar :focus-visible {
+  outline: 3px solid #ff9a57;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  body.cbe-detail-page .cbe-detail-header-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding: 10px 16px;
+  }
+
+  body.cbe-detail-page header.cbe-detail-header .cbe-detail-brand img { height: 64px !important; }
+  body.cbe-detail-page header.cbe-detail-header nav.cbe-detail-nav { font-size: 13px; }
+}

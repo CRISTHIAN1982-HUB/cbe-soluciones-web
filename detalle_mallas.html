@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidencias e Instalación de Mallas Anticaídas | CBE SOLUCIONES E.I.R.L.</title>
+  <meta name="description" content="Evidencias de trabajos, equipos empleados y procedimiento de instalación de mallas anticaídas y redes de protección en obras de construcción civil.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estructura principal en 2 columnas */
+    .trabajos-container {
+      max-width: 1280px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 35px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .trabajos-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mallas-columna {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      min-width: 0;
+    }
+
+    /* Ajustes locales: los contactos y el menú no invaden las galerías. */
+    .mallas-topbar {
+      flex-wrap: wrap;
+      gap: 4px 16px;
+    }
+
+    .mallas-topbar > div {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .mallas-topbar > div:first-child {
+      flex-wrap: wrap;
+      gap: 4px 16px !important;
+    }
+
+    @media (max-width: 900px) {
+      .mallas-header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px 16px !important;
+      }
+
+      .mallas-header .logo img {
+        height: 64px !important;
+        max-width: 100%;
+      }
+
+      .mallas-header nav {
+        position: static;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4px 16px !important;
+        padding: 0;
+        background: #fff;
+      }
+
+      .mallas-header nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
+    }
+
+    /* Carrusel exclusivo de evidencias: no modifica otras galerías. */
+    .galeria-evidencias {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .galeria-evidencias .mallas-visor {
+      position: relative;
+      width: 100%;
+      height: clamp(320px, 39vw, 500px);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #162735;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid #cbd5e1;
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .galeria-evidencias .mallas-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 280ms ease, visibility 0s linear 280ms;
+    }
+
+    .galeria-evidencias .mallas-slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    /* El fondo utiliza la misma foto; la imagen nítida conserva sus proporciones. */
+    .galeria-evidencias .mallas-slide::before {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      background-image: var(--mallas-backdrop);
+      background-size: cover;
+      background-position: center;
+      filter: blur(18px) brightness(.65);
+      pointer-events: none;
+    }
+
+    .galeria-evidencias .mallas-slide img {
+      position: relative;
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: var(--mallas-fit, contain) !important;
+      object-position: center;
+      user-select: none;
+    }
+
+    .galeria-evidencias .mallas-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      background: rgba(15,23,42,.92);
+      color: #fff;
+      font: 32px/1 system-ui, sans-serif;
+      cursor: pointer;
+    }
+
+    .galeria-evidencias .mallas-arrow:hover {
+      background: #1e293b;
+    }
+
+    .galeria-evidencias .mallas-prev { left: 10px; }
+    .galeria-evidencias .mallas-next { right: 10px; }
+
+    .galeria-evidencias .mallas-position {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+    }
+
+    .galeria-evidencias .mallas-counter {
+      margin: 0;
+      color: #334155;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .galeria-evidencias .mallas-dots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
+
+    .galeria-evidencias .mallas-dot {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 32px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .galeria-evidencias .mallas-dot::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 10px;
+      background: #64748b;
+      transition: width 180ms ease, background-color 180ms ease;
+    }
+
+    .galeria-evidencias .mallas-dot[aria-current="true"]::before {
+      width: 16px;
+      background: #9a3900;
+    }
+
+    .galeria-evidencias .mallas-help {
+      margin: 0;
+      color: #475569;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .galeria-evidencias:focus-visible,
+    .galeria-evidencias button:focus-visible {
+      outline: 3px solid #9a3900;
+      outline-offset: 3px;
+    }
+
+    .galeria-evidencias .mallas-arrow:focus-visible {
+      outline-color: #fff;
+      outline-offset: -5px;
+    }
+
+    .galeria-evidencias [hidden] { display: none; }
+
+    @media (max-width: 900px) {
+      .galeria-evidencias .mallas-visor {
+        height: clamp(300px, 80vw, 440px);
+      }
+    }
+
+    /* Miniaturas que seleccionan una fotografía en el carrusel existente. */
+    .mallas-instalaciones {
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      min-width: 0;
+    }
+
+    .mallas-instalaciones h2 {
+      margin: 0 0 20px;
+      color: #1e293b;
+      font-size: clamp(21px, 2.3vw, 27px);
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .mallas-instalaciones .mallas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mallas-instalaciones figure {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .mallas-instalaciones .mallas-preview {
+      aspect-ratio: 4 / 3;
+      background: #f1f5f9;
+    }
+
+    .mallas-instalaciones .mallas-thumbnail {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .mallas-instalaciones .mallas-thumbnail:focus-visible {
+      outline: 3px solid #9a3900;
+      outline-offset: -4px;
+    }
+
+    .mallas-instalaciones figure.is-selected {
+      border-color: #9a3900;
+      box-shadow: 0 0 0 2px rgba(255,102,0,.18);
+    }
+
+    .mallas-instalaciones .mallas-preview img {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 40%;
+    }
+
+    .mallas-instalaciones figcaption {
+      padding: 12px;
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 900px) {
+      .mallas-instalaciones .mallas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 374px) {
+      .mallas-instalaciones .mallas-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .galeria-evidencias .mallas-slide,
+      .galeria-evidencias .mallas-dot::before {
+        transition: none;
+      }
+    }
+
+    /* Columna Derecha: Información y Procedimiento Técnico */
+    .info-servicio {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    }
+
+    .info-servicio .tag {
+      color: #ff6600;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-servicio h1 {
+      font-size: 28px;
+      color: #1e293b;
+      margin: 0 0 18px 0;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .info-servicio p {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .seccion-tecnica {
+      margin-top: 25px;
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 20px;
+    }
+
+    .seccion-tecnica h3 {
+      font-size: 17px;
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .lista-pasos, .lista-equipos {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+    }
+
+    .lista-pasos li, .lista-equipos li {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .lista-pasos li span {
+      background-color: #ff6600;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 50%;
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .lista-equipos li span {
+      color: #25d366;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .btn-solicitar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #ff6600;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(255,102,0,0.25);
+      transition: background-color 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-solicitar:hover {
+      background-color: #e65c00;
+    }
+  </style>
+  <link rel="stylesheet" href="detalle-header.css">
+</head>
+<body class="cbe-detail-page">
+
+  <!-- BARRA SUPERIOR DE CONTACTOS -->
+  <div class="cbe-detail-topbar">
+  <div class="cbe-detail-topbar-inner">
+    <div class="cbe-detail-contacts">
+      <a href="tel:+51960139960">+51 960 139 960</a>
+      <a href="mailto:cbesoluciones@gmail.com">cbesoluciones@gmail.com</a>
+      <span>Lima, Perú</span>
+    </div>
+    <span class="cbe-detail-company">CBE SOLUCIONES E.I.R.L.</span>
+  </div>
+</div>
+
+  <!-- ENCABEZADO PRINCIPAL -->
+  <header class="cbe-detail-header mallas-header">
+  <div class="cbe-detail-header-inner">
+    <div class="cbe-detail-branding">
+      <a class="cbe-detail-brand" href="index.html" aria-label="CBE SOLUCIONES E.I.R.L. — Inicio"><img src="Imagenes/Logo.jpg" alt="CBE SOLUCIONES E.I.R.L."></a>
+      <nav class="cbe-detail-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#servicios-fotografias">Proyectos</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <!-- GALERÍA E INFORMACIÓN TÉCNICA -->
+  <main class="trabajos-container">
+    
+    <!-- COLUMNA IZQUIERDA: GALERÍA DE EVIDENCIAS -->
+    <div class="mallas-columna">
+    <div class="galeria-evidencias" id="galeria-mallas" role="region" aria-roledescription="carrusel" aria-label="Fotografías de instalación de mallas anticaídas" aria-describedby="mallas-help" tabindex="0">
+      <div class="mallas-visor" id="mallas-visor">
+        <div class="mallas-slide is-active" data-cover="safe" role="group" aria-roledescription="fotografía" aria-label="1 de 9" aria-hidden="false"><img src="Imagenes/Anticaidas.png" alt="Instalación de Malla Anticaídas" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="2 de 9" aria-hidden="true"><img src="Imagenes/Malla_5.jpg" alt="Evidencia 1" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="3 de 9" aria-hidden="true"><img src="Imagenes/Malla_6.jpg" alt="Evidencia 2" draggable="false"></div>
+        <div class="mallas-slide" data-cover="safe" role="group" aria-roledescription="fotografía" aria-label="4 de 9" aria-hidden="true"><img src="Imagenes/Malla_7.jpg" alt="Evidencia 3" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="5 de 9" aria-hidden="true"><img src="Imagenes/Malla_8.jpg" alt="Evidencia 4" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="6 de 9" aria-hidden="true"><img src="Imagenes/Malla_9.png" alt="Evidencia 5" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="7 de 9" aria-hidden="true"><img src="Imagenes/Malla_10.png" alt="Evidencia 6" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="8 de 9" aria-hidden="true"><img src="Imagenes/Malla_11.png" alt="Evidencia 7" draggable="false"></div>
+        <div class="mallas-slide" role="group" aria-roledescription="fotografía" aria-label="9 de 9" aria-hidden="true"><img src="Imagenes/Malla_12.jfif" alt="Evidencia 8" draggable="false"></div>
+        <button class="mallas-arrow mallas-prev" type="button" aria-label="Fotografía anterior" aria-controls="mallas-visor" hidden><span aria-hidden="true">‹</span></button>
+        <button class="mallas-arrow mallas-next" type="button" aria-label="Fotografía siguiente" aria-controls="mallas-visor" hidden><span aria-hidden="true">›</span></button>
+      </div>
+      <div class="mallas-position" hidden>
+        <p class="mallas-counter" role="status" aria-live="polite" aria-atomic="true">Foto 1 de 9</p>
+        <div class="mallas-dots" role="group" aria-label="Elegir fotografía"></div>
+      </div>
+      <p class="mallas-help" id="mallas-help" hidden>Desliza para cambiar de foto o utiliza las flechas. Con el foco en la galería, usa ← y →; Inicio y Fin llevan a la primera y última foto.</p>
+      <noscript>Activa JavaScript para recorrer las nueve fotografías.</noscript>
+    </div>
+
+    <section class="mallas-instalaciones" aria-labelledby="mallas-instalaciones-titulo">
+      <h2 id="mallas-instalaciones-titulo">Galería de Instalaciones de Mallas Anticaídas</h2>
+      <div class="mallas-grid">
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_3.jfif" alt="Vista lateral de un edificio con mallas de protección en distintos niveles" width="900" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>Vista lateral de las mallas instaladas.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_5.jpg" alt="Edificio con mallas azules de protección y redes en su fachada" width="900" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>Vista general de la protección de fachada.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_6.jpg" alt="Mallas de protección en fachada junto a una zona de descarga de materiales" width="900" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>Protección de fachada y entorno de obra.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_7.jpg" alt="Vista desde la calle de redes anticaídas distribuidas en varios niveles del edificio" width="1600" height="900" loading="lazy" decoding="async"></div>
+          <figcaption>Redes de protección en distintos niveles.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_8.jpg" alt="Vista lateral de redes anticaídas que sobresalen de la fachada protegida" width="900" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>Vista lateral de las redes de protección.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_9.png" alt="Vista frontal de una obra con redes de seguridad azules en el perímetro" width="1640" height="959" loading="lazy" decoding="async"></div>
+          <figcaption>Vista frontal de la protección perimetral.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_10.png" alt="Vista vertical de redes de seguridad instaladas a lo largo de un edificio" width="941" height="1672" loading="lazy" decoding="async"></div>
+          <figcaption>Redes instaladas a lo largo de la fachada.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_11.png" alt="Vista en perspectiva de redes anticaídas en los bordes de los niveles de una obra" width="1633" height="963" loading="lazy" decoding="async"></div>
+          <figcaption>Perspectiva de las redes en los bordes de obra.</figcaption>
+        </figure>
+        <figure>
+          <div class="mallas-preview"><img src="Imagenes/Malla_12.jfif" alt="Redes de seguridad azules desplegadas en varios niveles de la fachada de un edificio" width="900" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>Detalle de las redes desplegadas en fachada.</figcaption>
+        </figure>
+      </div>
+    </section>
+    </div>
+
+    <!-- COLUMNA DERECHA: TEXTO TÉCNICO EXPLICATIVO -->
+    <div class="info-servicio">
+      <span class="tag">EVIDENCIAS DE TRABAJOS EN OBRA</span>
+      <h1>Instalación de Mallas Anticaídas y Redes de Seguridad</h1>
+      
+      <p>
+        En <strong>CBE SOLUCIONES E.I.R.L.</strong> nos especializamos en la ejecución e instalación de redes y mallas de seguridad colectiva para proyectos de edificación y construcción civil, garantizando la contención efectiva ante caídas de personas o materiales en vacíos de edificación y bordes de losa.
+      </p>
+
+      <div class="seccion-tecnica">
+        <h3>🏗️ Procedimiento de Instalación en Obra</h3>
+        <ul class="lista-pasos">
+          <li><span>1</span> <strong>Inspección y Trazado:</strong> Evaluación previa de la estructura, puntos fijadores y cálculo de luces en los bordes de losa o vacíos de ascensor.</li>
+          <li><span>2</span> <strong>Instalación de Anclajes:</strong> Colocación de cáncamos, pernos de expansión y brazos metálicos regulables para sostener la estructura.</li>
+          <li><span>3</span> <strong>Despliegue y Tensionado:</strong> Montaje de las mallas mediante drizas perimetrales e hilado de refuerzo asegurando la tensión requerida.</li>
+          <li><span>4</span> <strong>Prueba y Entrega:</strong> Verificación de resistencia de la red, firma del protocolo de instalación y entrega al responsable SSOMA de la obra.</li>
+        </ul>
+      </div>
+
+      <div class="seccion-tecnica">
+        <h3>🛡️ Equipos y Materiales Empleados</h3>
+        <ul class="lista-equipos">
+          <li><span>✓</span> <strong>Mallas Poliamida / Polietileno:</strong> De alta tenacidad con tratamiento UV para resistir intemperie y capacidad de absorción de impactos.</li>
+          <li><span>✓</span> <strong>Estructuras y Brazos Metálicos:</strong> Perfiles de acero galvanizado y horcas de soporte perimetral.</li>
+          <li><span>✓</span> <strong>Elementos de Fijación:</strong> Pernos de anclaje expansivos, mosquetones de acero y guardacabos.</li>
+          <li><span>✓</span> <strong>EPP de Altura para Operarios:</strong> Arnés multianclaje, líneas de vida con absorbedor de impacto y cascos con barbiquejo de 4 puntos.</li>
+        </ul>
+      </div>
+
+      <a href="https://wa.me/51960139960?text=Hola%20CBE%20SOLUCIONES,%20quisiera%20solicitar%20información%20y%20cotización%20sobre%20el%20servicio%20de%20instalación%20de%20mallas." class="btn-solicitar" target="_blank">
+        💬 Solicitar Cotización del Servicio
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Interacción aislada del carrusel; no utiliza ventanas emergentes. -->
+  <script>
+    (() => {
+      const gallery = document.getElementById('galeria-mallas');
+      if (!gallery || gallery.dataset.mallasReady === 'true') return;
+      gallery.dataset.mallasReady = 'true';
+      const slides = Array.from(gallery.querySelectorAll('.mallas-slide'));
+      const viewer = gallery.querySelector('.mallas-visor');
+      const counter = gallery.querySelector('.mallas-counter');
+      const indicators = gallery.querySelector('.mallas-dots');
+      const thumbnailGrid = document.querySelector('.mallas-instalaciones .mallas-grid');
+      const thumbnailTargets = new Map();
+      let current = 0;
+      let gesture = null;
+      let scrollFrame = null;
+
+      function normalizedPath(src) {
+        const url = new URL(src, document.baseURI);
+        url.hash = '';
+        url.search = '';
+        return url.href;
+      }
+
+      const positions = new Map(slides.map((slide, index) => [
+        normalizedPath(slide.querySelector('img').getAttribute('src')), index,
+      ]));
+
+      if (thumbnailGrid) {
+        thumbnailGrid.querySelectorAll('.mallas-preview img').forEach((thumbnail) => {
+          const path = normalizedPath(thumbnail.getAttribute('src'));
+          if (!positions.has(path)) {
+            const slide = document.createElement('div');
+            slide.className = 'mallas-slide';
+            slide.setAttribute('role', 'group');
+            slide.setAttribute('aria-roledescription', 'fotografía');
+            slide.setAttribute('aria-hidden', 'true');
+            const image = thumbnail.cloneNode(true);
+            image.loading = 'eager';
+            image.draggable = false;
+            slide.appendChild(image);
+            viewer.insertBefore(slide, viewer.querySelector('.mallas-prev'));
+            positions.set(path, slides.length);
+            slides.push(slide);
+          }
+
+          // Los botones nativos activan la misma selección con clic, Enter o Espacio.
+          const preview = thumbnail.closest('.mallas-preview');
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'mallas-preview mallas-thumbnail';
+          button.setAttribute('aria-label', `Mostrar en el carrusel: ${thumbnail.alt}`);
+          button.setAttribute('aria-controls', 'mallas-visor');
+          preview.replaceWith(button);
+          button.appendChild(thumbnail);
+          thumbnailTargets.set(button, positions.get(path));
+        });
+
+        // Un solo listener para todas las miniaturas, incluidas sus imágenes.
+        thumbnailGrid.addEventListener('click', (event) => {
+          const button = event.target.closest('.mallas-thumbnail');
+          if (!thumbnailTargets.has(button)) return;
+          show(thumbnailTargets.get(button));
+          gallery.focus({ preventScroll: true });
+          if (scrollFrame !== null) window.cancelAnimationFrame(scrollFrame);
+          const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          // Iniciar el desplazamiento después de completar la activación del botón.
+          const scrollToGallery = () => {
+            scrollFrame = null;
+            const header = document.querySelector('.mallas-header');
+            const offset = header ? header.getBoundingClientRect().height : 0;
+            const top = gallery.getBoundingClientRect().top + window.scrollY - offset - 16;
+            window.scrollTo({
+              top: Math.max(0, top),
+              behavior: reducedMotion ? 'instant' : 'smooth',
+            });
+          };
+          if (reducedMotion) scrollToGallery();
+          else scrollFrame = window.requestAnimationFrame(scrollToGallery);
+        });
+      }
+
+      slides.forEach((slide, index) => {
+        slide.setAttribute('aria-label', `${index + 1} de ${slides.length}`);
+      });
+
+      function updateFraming() {
+        const frameRatio = viewer.clientWidth / viewer.clientHeight;
+        slides.forEach((slide) => {
+          const image = slide.querySelector('img');
+          if (!image.naturalWidth || !image.naturalHeight) return;
+          const ratio = image.naturalWidth / image.naturalHeight;
+          // Solo recortar las vistas revisadas y como máximo un 13 % del encuadre.
+          const cover = slide.dataset.cover === 'safe' &&
+            Math.max(ratio / frameRatio, frameRatio / ratio) <= 1.15;
+          slide.style.setProperty('--mallas-fit', cover ? 'cover' : 'contain');
+        });
+      }
+
+      slides.forEach((slide) => {
+        const image = slide.querySelector('img');
+        slide.style.setProperty('--mallas-backdrop', `url("${image.getAttribute('src')}")`);
+        image.addEventListener('load', updateFraming);
+      });
+      const framingObserver = new ResizeObserver(updateFraming);
+      framingObserver.observe(viewer);
+      updateFraming();
+
+      const dots = slides.map((slide, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'mallas-dot';
+        button.setAttribute('aria-label', `Ver fotografía ${index + 1} de ${slides.length}`);
+        button.setAttribute('aria-controls', 'mallas-visor');
+        button.addEventListener('click', () => show(index));
+        indicators.appendChild(button);
+        return button;
+      });
+
+      function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, position) => {
+          const active = position === current;
+          slide.classList.toggle('is-active', active);
+          slide.setAttribute('aria-hidden', String(!active));
+          if (active) dots[position].setAttribute('aria-current', 'true');
+          else dots[position].removeAttribute('aria-current');
+        });
+        counter.textContent = `Foto ${current + 1} de ${slides.length}`;
+        thumbnailTargets.forEach((position, button) => {
+          const selected = position === current;
+          button.setAttribute('aria-pressed', String(selected));
+          button.closest('figure').classList.toggle('is-selected', selected);
+        });
+      }
+
+      gallery.querySelector('.mallas-prev').addEventListener('click', () => show(current - 1));
+      gallery.querySelector('.mallas-next').addEventListener('click', () => show(current + 1));
+      gallery.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        const destinations = { ArrowLeft: current - 1, ArrowRight: current + 1, Home: 0, End: slides.length - 1 };
+        if (!Object.prototype.hasOwnProperty.call(destinations, event.key)) return;
+        event.preventDefault();
+        show(destinations[event.key]);
+      });
+
+      viewer.addEventListener('pointerdown', (event) => {
+        if (!event.isPrimary || event.pointerType === 'mouse' || event.target.closest('button')) return;
+        gesture = { id: event.pointerId, x: event.clientX, y: event.clientY };
+        viewer.setPointerCapture(event.pointerId);
+      });
+      viewer.addEventListener('pointerup', (event) => {
+        if (!gesture || gesture.id !== event.pointerId) return;
+        const dx = event.clientX - gesture.x;
+        const dy = event.clientY - gesture.y;
+        gesture = null;
+        if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+          show(current + (dx < 0 ? 1 : -1));
+        }
+      });
+      viewer.addEventListener('pointercancel', () => { gesture = null; });
+      viewer.addEventListener('lostpointercapture', () => { gesture = null; });
+
+      show(0);
+      gallery.querySelectorAll('[hidden]').forEach((element) => { element.hidden = false; });
+    })();
+  </script>
+</body>
+</html>
